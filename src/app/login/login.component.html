@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="container__login-body">
+    <form class="row g-3" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="col-auto">
+        <label for="email" class="visually-hidden">Email</label>
+        <input type="text"
+               class="form-control"
+               id="email"
+               placeholder="Email"
+               formControlName="email">
+      </div>
+      <div class="col-auto">
+        <label for="inputPassword" class="visually-hidden">Password</label>
+        <input type="password"
+               class="form-control"
+               id="inputPassword"
+               placeholder="Password"
+        formControlName="password">
+      </div>
+      <div class="col-auto">
+        <button
+          type="submit"
+          class="btn btn-primary mb-3"
+          [disabled]="form.invalid || submitToggle"
+        >Confirm identity</button>
+      </div>
+    </form>
+    <div class="container__message text-danger" *ngIf="auth.error$ | async as error" style="margin-top: 1rem">
+      {{error}}
+    </div>
+  </div>
+</div>

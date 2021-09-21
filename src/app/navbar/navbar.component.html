@@ -1,0 +1,16 @@
+<div class="container">
+  <ul class="nav justify-content-end">
+    <li routerLinkActive="nav-item">
+      <a class="nav-link text-primary" aria-current="page" [routerLink]="['/']"  routerLinkActive="active">Home</a>
+    </li>
+    <li routerLinkActive="nav-item">
+      <a class="nav-link text-primary" [routerLink]="['/news']"  routerLinkActive="active">News</a>
+    </li>
+    <li routerLinkActive="nav-item">
+      <a class="nav-link text-primary" [routerLink]="['/login']" routerLinkActive="active">Login</a>
+    </li>
+    <li routerLinkActive="nav-item" *ngIf="auth.isAuthenticated()">
+      <a class="nav-link text-primary" [routerLink]="['/profile']"  routerLinkActive="active">Profile</a>
+    </li>
+  </ul>
+</div>
