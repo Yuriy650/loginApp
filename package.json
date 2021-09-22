@@ -1,7 +1,10 @@
 {
+  "homepage": "https://Yuriy650.github.io/myLoginApp",
   "name": "my-login-app",
   "version": "0.0.0",
   "scripts": {
+    "predeploy": "npm run build -- --prod=true --base-href=https://Yuriy650.github.io/myLoginApp/",
+    "deploy": "@powershell copy dist/myLoginApp/index.html dist/myLoginApp/404.html && gh-pages -d dist/myLoginApp",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
