@@ -1,6 +1,6 @@
 {
   "homepage": "https://Yuriy650.github.io/loginapp",
-  "name": "my-login-app",
+  "name": "loginapp",
   "version": "0.0.0",
   "scripts": {
     "predeploy": "npm run build -- --prod=true --base-href=https://Yuriy650.github.io/loginapp/",
