@@ -7,7 +7,7 @@ import {Articles, NewsDataService} from './services/newsData.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'myLoginApp';
+  title = 'loginapp';
   articles: Articles[]=[]
   constructor(private newsDataService: NewsDataService) {
   }
