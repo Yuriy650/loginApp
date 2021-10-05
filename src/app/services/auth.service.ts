@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {FireBaseResponse, User} from '../interfaces';
+import {User} from '../interfaces';
 import {Observable, Subject, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 
@@ -8,37 +8,38 @@ import {catchError, tap} from 'rxjs/operators';
 
 export class AuthService {
   KEY = 'AIzaSyBHCSIyjyPCByVo6qKkGuNq9V-6h7M2Aag';
-public error$: Subject<string> =new Subject<string>()
+  public error$: Subject<string> = new Subject<string>();
+
   constructor(private http: HttpClient) {
 
   }
 
   get token(): string | null {
     // @ts-ignore
-    const expDate = new Date(localStorage.getItem('firebase-token-exp-date'))
+    const expDate = new Date(localStorage.getItem('firebase-token-exp-date'));
     if (new Date() > expDate) {
-      this.logout()
-      return null
+      this.logout();
+      return null;
     }
-    return localStorage.getItem('firebase-token')
+    return localStorage.getItem('firebase-token');
   }
 
   public isAuth = false;
 
-  handleError(error: HttpErrorResponse){
-const {message} = error.error.error;
-switch (message) {
-  case 'EMAIL_NOT_FOUND':
-    this.error$.next('Email does not exist')
-    break
-  case 'INVALID_PASSWORD':
-    this.error$.next('Incorrect password')
-    break
-  case 'INVALID_EMAIL':
-    this.error$.next('Wrong email address')
-    break
-}
-return throwError(error)
+  handleError(error: HttpErrorResponse) {
+    const {message} = error.error.error;
+    switch (message) {
+      case 'EMAIL_NOT_FOUND':
+        this.error$.next('Email does not exist');
+        break;
+      case 'INVALID_PASSWORD':
+        this.error$.next('Incorrect password');
+        break;
+      case 'INVALID_EMAIL':
+        this.error$.next('Wrong email address');
+        break;
+    }
+    return throwError(error);
   }
 
   login(user: User): Observable<any> {
@@ -53,7 +54,7 @@ return throwError(error)
   }
 
   logout() {
-this.setToken(null)
+    this.setToken(null);
   }
 
   isAuthenticated(): boolean {
@@ -65,9 +66,9 @@ this.setToken(null)
     if (response) {
       const expiresDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
       localStorage.setItem('firebase-token', response.idToken);
-      localStorage.setItem('firebase-token-exp-date', expiresDate.toString())
+      localStorage.setItem('firebase-token-exp-date', expiresDate.toString());
     } else {
-      localStorage.clear()
+      localStorage.clear();
     }
   }
 }

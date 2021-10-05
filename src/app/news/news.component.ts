@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Articles, NewsDataService} from '../services/newsData.service';
+import {Articles, NewsDataService} from '../services/news-data.service';
 import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
 
