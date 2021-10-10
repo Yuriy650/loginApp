@@ -44,7 +44,6 @@ export class AuthService {
 
   login(user: User): Observable<any> {
     user.returnSecureToken = true;
-
     return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.KEY}`, user)
       .pipe(
         tap(this.setToken),

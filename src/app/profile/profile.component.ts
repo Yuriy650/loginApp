@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  profileTitle: string = 'My profile';
 
   constructor(public authService: AuthService,
               private router: Router) { }

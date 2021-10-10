@@ -30,8 +30,8 @@ export class NewsComponent implements OnInit {
         }
       )
   }
-
   goToMain() {
     this.router.navigate(['/'])
   }
+
 }
